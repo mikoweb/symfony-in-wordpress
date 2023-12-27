@@ -1,18 +1,16 @@
 {% block flashes %}
     {% for message in flash_bag.get('admin_success') %}
-        <div class="alert alert-success" role="alert">
-            {{ message }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+        <div class="notice notice-success" role="alert">
+            <p>
+                <strong>{{ message }}</strong>
+            </p>
         </div>
     {% endfor %}
     {% for message in flash_bag.get('admin_error') %}
-        <div class="alert alert-danger" role="alert">
-            {{ message }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+        <div class="notice notice-error" role="alert">
+            <p>
+                <strong>{{ message }}</strong>
+            </p>
         </div>
     {% endfor %}
 {% endblock %}
