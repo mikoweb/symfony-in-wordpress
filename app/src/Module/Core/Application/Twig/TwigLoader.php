@@ -48,7 +48,9 @@ final class TwigLoader
             $this->twig->addGlobal('flash_bag', $this->session->getFlashBag());
             $this->twig->addGlobal('request_query', $request->query);
 
-            $formEngine = new TwigRendererEngine(['bootstrap_3_layout.html.twig'], $this->twig);
+            $formEngine = new TwigRendererEngine([
+                is_admin() ? 'admin/form/theme.html.twig' : 'bootstrap_5_layout.html.twig'
+            ], $this->twig);
             $this->twig->addRuntimeLoader(new FactoryRuntimeLoader([
                 FormRenderer::class => function () use ($formEngine) {
                     return new FormRenderer($formEngine);
