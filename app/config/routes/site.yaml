@@ -1,0 +1,3 @@
+site_lorem_ipsum:
+    resource: site/lorem_ipsum.yaml
+    prefix: /lorem-ipsum

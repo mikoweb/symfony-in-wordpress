@@ -1,0 +1,4 @@
+site_lorem_ipsum_index:
+    path: /index
+    controller: App\Module\LoremIpsum\Application\Controller\LoremIpsumController::index
+    methods: [GET]

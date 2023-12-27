@@ -1,0 +1,3 @@
+admin_dashboard:
+    resource: admin/dashboard.yaml
+    prefix: /

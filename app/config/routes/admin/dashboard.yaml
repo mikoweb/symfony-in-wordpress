@@ -1,0 +1,4 @@
+admin_dashboard_index:
+    path: /
+    controller: App\Module\Dashboard\Application\Controller\Admin\DashboardController::getDashboard
+    methods: [GET]
