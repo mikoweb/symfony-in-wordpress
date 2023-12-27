@@ -16,7 +16,6 @@ final class Container
 
     private function __construct() {}
     private function __clone() {}
-    private function __wakeup() {}
 
     public function getContainer(): ContainerInterface
     {
@@ -27,10 +26,8 @@ final class Container
 
             $this->builder = $containerBuilder;
 
-            if (!is_null(self::$params)) {
-                ContainerParamsFactory::setupFromWP($containerBuilder);
-                ContainerParamsFactory::setupFromEnv($containerBuilder);
-            }
+            ContainerParamsFactory::setupFromWP($containerBuilder);
+            ContainerParamsFactory::setupFromEnv($containerBuilder);
 
             $this->container = $this->builder->get('service_container');
             $this->container->compile();
