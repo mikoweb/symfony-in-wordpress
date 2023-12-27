@@ -1,0 +1,10 @@
+{% extends "admin/admin_base.html.twig" %}
+
+{% block admin_content %}
+    <section>
+        <h1 class="error-code">Code {{ statusCode }}</h1>
+        <a href="{{ admin_link({'route': null}) }}" class="btn btn-secondary">
+            {{ 'admin.error.btn_text'|trans }}
+        </a>
+    </section>
+{% endblock %}
