@@ -16,9 +16,10 @@ final class AdminMenu
     {
         if (!self::$loaded) {
             add_action('admin_menu', function() {
+                $response = $this->adminHandler->handleRequest();
+
                 add_menu_page('', 'Symfony App', 'manage_options', PluginNameConstant::NAME,
-                    function () {
-                        $response = $this->adminHandler->handleRequest();
+                    function () use($response) {
                         $this->adminHandler->handleResponse($response);
                     });
             });
