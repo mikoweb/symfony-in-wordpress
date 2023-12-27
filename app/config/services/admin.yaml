@@ -1,0 +1,13 @@
+services:
+    admin:
+        class: App\Module\Service\AdminService
+        public: true
+        autowire: true
+
+    App\Module\WP\Admin\Application\Routing\AdminRouter:
+        public: true
+        autowire: true
+
+    admin_router:
+        alias: App\Module\WP\Admin\Application\Routing\AdminRouter
+        public: true

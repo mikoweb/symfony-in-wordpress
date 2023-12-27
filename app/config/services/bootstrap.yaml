@@ -1,0 +1,42 @@
+services:
+    bootstrap:
+        class: App\Module\Service\BootstrapService
+        public: true
+        autowire: true
+
+    Symfony\Component\Translation\Translator:
+        public: true
+        arguments:
+            - '%locale%'
+    Symfony\Contracts\Translation\TranslatorInterface: '@Symfony\Component\Translation\Translator'
+    translator:
+        alias: Symfony\Contracts\Translation\TranslatorInterface
+        public: true
+
+    Symfony\Component\HttpFoundation\Session\Session:
+        public: true
+    Symfony\Component\HttpFoundation\Session\SessionInterface: '@Symfony\Component\HttpFoundation\Session\Session'
+    session:
+        alias: Symfony\Component\HttpFoundation\Session\SessionInterface
+        public: true
+
+    Twig\Environment:
+        public: true
+        factory: ['@App\Module\Core\Application\Twig\TwigLoader', 'load']
+    twig:
+        alias: Twig\Environment
+        public: true
+
+    Symfony\Component\Form\FormFactoryInterface:
+        public: true
+        factory: ['@App\Module\Core\Application\Form\FormFactory', 'getFormFactory']
+    form.factory:
+        alias: Symfony\Component\Form\FormFactoryInterface
+        public: true
+
+    Symfony\Component\Serializer\SerializerInterface:
+        public: true
+        factory: ['@App\Module\Core\Application\Serializer\SerializerFactory', 'getSerializer']
+    serializer:
+        alias: Symfony\Component\Serializer\SerializerInterface
+        public: true
