@@ -2,3 +2,5 @@ composer.phar
 vendor
 .env.local
 var/cache
+!/app/var/cache/twig/.gitkeep
+!/app/var/cache/.gitkeep
