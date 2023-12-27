@@ -30,8 +30,6 @@ final readonly class AdminHandler
 
     public function handleResponse(Response $response): void
     {
-        $response = $this->adminHandler->handle();
-
         if ($response instanceof RedirectResponse) {
             wp_redirect($response->getTargetUrl());
             exit();
