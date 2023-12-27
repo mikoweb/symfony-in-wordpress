@@ -2,6 +2,7 @@
 /.htaccess
 /wp-admin
 /wp-content
+!/wp-content/plugins/app/*
 /wp-includes
 index.php
 license.txt
