@@ -22,5 +22,5 @@ Container::get()->getService('bootstrap')->bootstrap();
 if (is_admin()) {
     Container::get()->getService('admin')->adminMenu->addMenu();
 } else {
-    // TODO load site routing
+    Container::get()->getService('site')->siteHandler->handle();
 }

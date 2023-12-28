@@ -1,1 +1,13 @@
-services: ~
+services:
+    site:
+        class: App\Module\Service\SiteService
+        public: true
+        autowire: true
+
+    App\Module\WP\Site\Application\Routing\SiteRouter:
+        public: true
+        autowire: true
+
+    site_router:
+        alias: App\Module\WP\Site\Application\Routing\SiteRouter
+        public: true

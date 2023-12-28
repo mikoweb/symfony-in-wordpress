@@ -4,6 +4,7 @@ namespace App\Module\Core\Application\Twig;
 
 use App\Container;
 use App\Module\WP\Admin\Application\Twig\Extension\AdminRouteExtension;
+use App\Module\WP\Site\Application\Twig\Extension\SiteRouteExtension;
 use App\Path;
 use Symfony\Bridge\Twig\Extension\DumpExtension;
 use Symfony\Bridge\Twig\Extension\FormExtension;
@@ -27,7 +28,8 @@ final class TwigLoader
     public function __construct(
         private readonly SessionInterface $session,
         private readonly TranslatorInterface $translator,
-        private readonly AdminRouteExtension $adminRouteExtension
+        private readonly AdminRouteExtension $adminRouteExtension,
+        private readonly SiteRouteExtension $siteRouteExtension
     ) {}
 
     public function load(): Environment
@@ -62,6 +64,7 @@ final class TwigLoader
             $this->twig->addExtension(new DumpExtension(new VarCloner()));
             $this->twig->addExtension(new FormExtension($this->translator));
             $this->twig->addExtension($this->adminRouteExtension);
+            $this->twig->addExtension($this->siteRouteExtension);
 
             $this->load = true;
         }
