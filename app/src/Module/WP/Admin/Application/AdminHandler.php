@@ -39,7 +39,7 @@ final readonly class AdminHandler
     {
         if ($response instanceof RedirectResponse) {
             wp_redirect($response->getTargetUrl());
-            exit();
+            exit;
         }
     }
 }

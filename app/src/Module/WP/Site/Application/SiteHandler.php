@@ -22,30 +22,31 @@ final readonly class SiteHandler
             $response = $this->siteRoutingLoader->handleRequest();
             $oldUri = $_SERVER['REQUEST_URI'];
 
-            add_action('init', function() use ($response) {
+            add_action('init', function () use ($response) {
                 $this->preparePage();
 
                 if ($response instanceof RedirectResponse) {
                     wp_redirect($response->getTargetUrl());
-                    exit();
+                    exit;
                 }
             });
 
             add_action('do_parse_request', function (bool $parse) {
                 $_SERVER['REQUEST_URI'] = self::ROUTER_PAGE_PATH;
+
                 return $parse;
             });
 
-            add_action('parse_request', function (WP $wp) use($oldUri) {
+            add_action('parse_request', function (WP $wp) use ($oldUri) {
                 $_SERVER['REQUEST_URI'] = $oldUri;
                 $wp->request = $oldUri;
             });
 
-            add_filter('the_title', function() {
+            add_filter('the_title', function () {
                 return '';
             });
 
-            add_filter('the_content', function () use($response) {
+            add_filter('the_content', function () use ($response) {
                 if (!$response instanceof RedirectResponse) {
                     return $response->getContent();
                 }
@@ -65,7 +66,8 @@ final readonly class SiteHandler
                 $matches = $urlMatcher->match($request->getPathInfo());
 
                 return !empty($matches);
-            } catch (ResourceNotFoundException $exception) {}
+            } catch (ResourceNotFoundException $exception) {
+            }
         }
 
         return false;
@@ -81,7 +83,7 @@ final readonly class SiteHandler
                 'post_title' => self::ROUTER_PAGE_PATH,
                 'post_content' => '',
                 'post_status' => 'draft',
-                'post_type' => 'page'
+                'post_type' => 'page',
             ]);
 
             $page = get_page_by_path(self::ROUTER_PAGE_PATH);

@@ -25,8 +25,7 @@ final class AdminRouteExtension extends AbstractExtension
         string $name,
         array $parameters = [],
         int $referenceType = UrlGeneratorInterface::ABSOLUTE_PATH
-    ): string
-    {
+    ): string {
         return $this->adminRouter->generate($name, $parameters, $referenceType);
     }
 

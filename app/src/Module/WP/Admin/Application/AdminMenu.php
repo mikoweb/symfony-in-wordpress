@@ -21,10 +21,15 @@ final class AdminMenu
             $this->request = Request::createFromGlobals();
 
             $this->action(function (string $pluginName, Response $response) {
-                add_menu_page('', 'Symfony App', 'manage_options', $pluginName,
-                    function () use($response) {
+                add_menu_page(
+                    '',
+                    'Symfony App',
+                    'manage_options',
+                    $pluginName,
+                    function () use ($response) {
                         $this->adminHandler->handleResponse($response);
-                    });
+                    }
+                );
             });
 
             self::$loaded = true;
@@ -33,7 +38,7 @@ final class AdminMenu
 
     private function action(callable $callable, string $pluginName = PluginNameConstant::NAME): void
     {
-        add_action('admin_menu', function() use ($pluginName, $callable) {
+        add_action('admin_menu', function () use ($pluginName, $callable) {
             $response = new Response();
 
             if ($this->request->query->get('page') === $pluginName) {

@@ -23,5 +23,19 @@
         "symfony/validator": "^6.4",
         "symfony/form": "^6.4",
         "symfony/serializer": "^6.4"
+    },
+    "scripts": {
+        "code-check": [
+            "./vendor/bin/phpcs",
+            "./vendor/bin/php-cs-fixer check -vvv"
+        ],
+        "code-fix": [
+            "./vendor/bin/phpcbf",
+            "./vendor/bin/php-cs-fixer fix"
+        ]
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.8",
+        "friendsofphp/php-cs-fixer": "^3.46"
     }
 }

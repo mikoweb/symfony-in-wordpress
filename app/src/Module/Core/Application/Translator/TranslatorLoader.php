@@ -43,7 +43,7 @@ final class TranslatorLoader
         $this->loadFromFinder($finder, 'validators', 'xlf');
     }
 
-    private function loadFromFinder(Finder $finder, string $domain = null, string $extension = 'yaml'): void
+    private function loadFromFinder(Finder $finder, ?string $domain = null, string $extension = 'yaml'): void
     {
         foreach ($finder as $file) {
             $locale = $this->getLocaleFromFilename($file->getRelativePathname(), $domain, $extension);
@@ -58,8 +58,7 @@ final class TranslatorLoader
         string $fileName,
         string $domain = 'messages',
         string $extension = 'yaml'
-    ): ?string
-    {
+    ): ?string {
         preg_match("/$domain\.(.+)\.$extension/", $fileName, $matches);
 
         return count($matches) > 0 ? $matches[1] : null;

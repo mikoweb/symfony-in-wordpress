@@ -5,6 +5,7 @@ namespace App\Module\Core\Application\Controller;
 use App\Container;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use UnitEnum;
 
 abstract class AbstractAppController extends AbstractController
 {
@@ -13,7 +14,7 @@ abstract class AbstractAppController extends AbstractController
         $this->setContainer(Container::get()->getContainer());
     }
 
-    protected function getParameter(string $name): array|bool|string|int|float|\UnitEnum|null
+    protected function getParameter(string $name): array|bool|string|int|float|UnitEnum|null
     {
         return Container::get()->getParameter($name);
     }

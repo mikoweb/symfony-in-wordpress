@@ -3,6 +3,7 @@
 namespace App\Module\WP\Site\Application\Routing;
 
 use Symfony\Component\HttpFoundation\Request;
+
 use function Symfony\Component\String\u;
 
 final class RequestFactory

@@ -7,8 +7,11 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 abstract class AbstractSiteController extends AbstractAppController
 {
-    protected function generateUrl(string $route, array $parameters = [], int $referenceType = UrlGeneratorInterface::ABSOLUTE_PATH): string
-    {
+    protected function generateUrl(
+        string $route,
+        array $parameters = [],
+        int $referenceType = UrlGeneratorInterface::ABSOLUTE_PATH
+    ): string {
         return $this->container->get('site_router')->generate($route, $parameters, $referenceType);
     }
 }

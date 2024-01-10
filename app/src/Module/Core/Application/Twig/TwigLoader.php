@@ -37,7 +37,7 @@ final class TwigLoader
         if (!$this->load) {
             $loader = new FilesystemLoader([
                 Path::getTemplatesPath(),
-                Path::getVendorPath('symfony/twig-bridge/Resources/views/Form')
+                Path::getVendorPath('symfony/twig-bridge/Resources/views/Form'),
             ], Path::getAppPath());
             $debug = Container::get()->getParameter('twig_debug');
             $this->twig = new Environment($loader, [
@@ -51,7 +51,7 @@ final class TwigLoader
             $this->twig->addGlobal('request_query', $request->query);
 
             $formEngine = new TwigRendererEngine([
-                is_admin() ? 'admin/form/theme.html.twig' : 'bootstrap_5_layout.html.twig'
+                is_admin() ? 'admin/form/theme.html.twig' : 'bootstrap_5_layout.html.twig',
             ], $this->twig);
             $this->twig->addRuntimeLoader(new FactoryRuntimeLoader([
                 FormRenderer::class => function () use ($formEngine) {

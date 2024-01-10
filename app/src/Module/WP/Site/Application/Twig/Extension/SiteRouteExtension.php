@@ -24,8 +24,7 @@ final class SiteRouteExtension extends AbstractExtension
         string $name,
         array $parameters = [],
         int $referenceType = UrlGeneratorInterface::ABSOLUTE_PATH
-    ): string
-    {
+    ): string {
         return $this->siteRouter->generate($name, $parameters, $referenceType);
     }
 }
